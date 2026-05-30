@@ -1,7 +1,4 @@
 # projects
-cool stuff
-
-# projects
 
 Experimental replacements for Transformer components. Work in progress.
 
