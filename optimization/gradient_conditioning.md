@@ -7,7 +7,7 @@
 
 ## Abstract
 
-Vanilla SGD doesn't know which gradient direction(For each weight vector) leads to good generalization. I added a tiny module that scales and shifts the gradient right before the parameter update. On CIFAR‑10, this gave a 7-12% test accuracy improvement over plain SGD, with about 12% extra training time. No new optimizer, no weight decay tuning — just a **hardcoded** but smarter gradient.
+Vanilla SGD doesn't know which gradient direction(For each weight vector) leads to good generalization. I added a tiny module that scales and shifts the gradient right before the parameter update. On CIFAR‑10, this gave a 7-12% test accuracy improvement over plain SGD, with about 12% extra training time. No new optimizer, no weight decay tuning - just a **hardcoded** but smarter gradient.
 
 ---
 
@@ -19,7 +19,7 @@ SGD updates weights:
 w = w - lr * g
 ```
 
-`g` is the raw gradient. The optimizer has no clue whether `g` points toward a narrow valley (brittle, poor generalization) or a flat minimum (robust). Grokking, sudden generalization after many epochs, is evidence that SGD gropes around blindly for a long time before stumbling into the right basin. You can add momentum, schedules, weight decay — they help, but they don't change the fact that the gradient signal itself is unprocessed.
+`g` is the raw gradient. The optimizer has no clue whether `g` points toward a narrow valley (brittle, poor generalization) or a flat minimum (robust). Grokking, sudden generalization after many epochs, is evidence that SGD gropes around blindly for a long time before stumbling into the right basin. You can add momentum, schedules, weight decay - they help, but they don't change the fact that the gradient signal itself is unprocessed.
 
 I wanted a way to reshape `g` on the fly without reinventing the optimizer. Something cheap, learnable, and removable
 
@@ -34,7 +34,7 @@ g_cond = scale * g + shift
 w = w - lr * g_cond
 ```
 
-`scale` and `shift` are scalar parameters (one per weight tensor) — not per‑element, just two numbers per tensor. For a typical CNN with ~1M parameters this adds fewer than 100 trainable scalars. They are trained alongside the network using the same loss, via a separate, much lower learning rate.
+`scale` and `shift` are scalar parameters (one per weight tensor) - not per‑element, just two numbers per tensor. For a typical CNN with ~1M parameters this adds fewer than 100 trainable scalars. They are trained alongside the network using the same loss, via a separate, much lower learning rate.
 
 The conditioner does nothing else. No normalization, no momentum inside it, no memory. It's as simple as it gets.
 
