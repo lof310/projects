@@ -21,7 +21,7 @@ w = w - lr * g
 
 `g` is the raw gradient. The optimizer has no clue whether `g` points toward a narrow valley (brittle, poor generalization) or a flat minimum (robust). Grokking, sudden generalization after many epochs, is evidence that SGD gropes around blindly for a long time before stumbling into the right basin. You can add momentum, schedules, weight decay - they help, but they don't change the fact that the gradient signal itself is unprocessed.
 
-I wanted a way to reshape `g` on the fly without reinventing the optimizer. Something cheap, learnable, and removable
+I wanted a way to reshape `g` on the fly without reinventing the optimizer. Something cheap, and removable
 
 ---
 
