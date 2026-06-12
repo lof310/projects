@@ -18,7 +18,7 @@ No dropout was used to avoid bias in the results.
 
 The final layer of the network uses ShiftMax or Softmax respectively.
 
-Various Loss Functions where evaluated:
+Various Loss Functions where evaluated for ShiftMax:
 ```python
 @staticmethod
 def cross_entropy_probs(probs, targets, eps=1e-12):
@@ -43,7 +43,7 @@ def focal_loss(probs, targets, alpha=1, gamma=2.0, eps=1e-12):
 @staticmethod
 def jsd_loss(probs, targets, num_classes, alpha=0.1, eps=1e-12):
     probs = torch.clamp(probs, min=eps, max=1.0-eps)
-    ce_loss = F.cross_entropy(torch.log(probs), targets)
+    ce_loss = cross_entropy_probs(torch.log(probs), targets)
     uniform = torch.ones_like(probs) / num_classes
     m = 0.5 * (probs + uniform)
     jsd = 0.5 * F.kl_div(torch.log(probs), m, reduction='batchmean') + \
