@@ -34,7 +34,7 @@ g_cond = scale * g + shift
 w = w - lr * g_cond
 ```
 
-`scale` and `shift` are scalar parameters (one per weight tensor) - not per‑element, just two numbers per tensor. For a typical CNN with ~1M parameters this adds fewer than 100 trainable scalars. They are trained alongside the network using the same loss, via a separate, much lower learning rate.
+`scale` and `shift` are scalar parameters (one per weight tensor) - not per‑element, just two numbers per tensor. For a typical CNN with ~1M parameters this adds fewer than 100 scalars. These scalars are generated according to the size, length, position in the network of each tensor.
 
 The conditioner does nothing else. No normalization, no momentum inside it, no memory. It's as simple as it gets.
 
