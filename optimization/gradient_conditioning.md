@@ -21,7 +21,7 @@ w = w - lr * g
 
 `g` is the raw gradient. The optimizer has no clue whether `g` points toward a narrow valley (brittle, poor generalization) or a flat minimum (robust). Grokking, sudden generalization after many epochs, is evidence that SGD gropes around blindly for a long time before stumbling into the right basin. You can add momentum, schedules, weight decay - they help, but they don't change the fact that the gradient signal itself is unprocessed.
 
-I wanted a way to reshape `g` on the fly without reinventing the optimizer. Something cheap, and removable
+I wanted a way to reshape `g` on the fly without reinventing the optimizer. Something cheap and removable
 
 ---
 
@@ -34,7 +34,7 @@ g_cond = scale * g + shift
 w = w - lr * g_cond
 ```
 
-`scale` and `shift` are scalar parameters (one per weight tensor) - not per‑element, just two numbers per tensor. For a typical CNN with ~1M parameters this adds fewer than 100 scalars. These scalars are generated according to the size, length and position in the network of each tensor.
+`scale` and `shift` are scalar parameters (one per weight tensor) - not per‑element, just two numbers per tensor. For a typical CNN with ~1M parameters this adds fewer than 100 scalars. These scalars are generated according to the size, length and position in the network of each tensor and two carefully choosen hyperparameters D and H.
 
 The conditioner does nothing else. No normalization, no momentum inside it, no memory. It's as simple as it gets.
 
