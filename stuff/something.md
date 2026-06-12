@@ -1,4 +1,15 @@
-Euclid's Proof of infinitude of Primes.
+# Symbolic Language for Small AI Reasoning
+
+This is a new symbolic language I'm designing specifically for small AI models (<150M parameters) to perform logical reasoning.
+
+## Design Goals
+
+- **Vocabulary:** <600 tokens total (vs. Lean's thousands)
+- **No natural language:** Purely symbolic, easier for small models to parse
+- **Coverage:** Supports proofs, reasoning, CoT, manual computations and logical deduction
+- **Motivation:** Lean is too complex for small models to learn effectively
+
+## Example: Euclid's Proof of infinitude of Primes.
 
 ```lean
 hyp p : Nat -> Prop.
