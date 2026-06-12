@@ -1,4 +1,11 @@
-# Experimental Setup:
+# ShiftMax
+ShiftMax is a normalization function that produces probability distributions 
+without using exponentials. Same FLOP count as Softmax, but faster in hardware(because it doesn't use exponentials) and doesn't have the over-confidence problem of SoftMax.
+
+The formula and implementation are proprietary and not published. 
+This document describes only the experimental setup used for internal validation.
+
+## Experimental Setup:
 Base FFN with each layer being:
 ```python
 [
@@ -39,8 +46,12 @@ def jsd_loss(probs, targets, num_classes, alpha=0.1, eps=1e-12):
     ce_loss = F.cross_entropy(torch.log(probs), targets)
     uniform = torch.ones_like(probs) / num_classes
     m = 0.5 * (probs + uniform)
-    jsd = 0.5 * F.kl_div(torch.log(probs), m, reduction='batchmean') + \ 0.5 * F.kl_div(torch.log(uniform), m, reduction='batchmean')
+    jsd = 0.5 * F.kl_div(torch.log(probs), m, reduction='batchmean') + \
+        0.5 * F.kl_div(torch.log(uniform), m, reduction='batchmean')
     return ce_loss + alpha * jsd
 ```
 
-The first one of them because doesn't use cross entropy directly because Cross Entropy uses internally LogSoftmax.
+**Note:** I use `cross_entropy_probs` instead of standard CrossEntropyLoss because the standard implementation uses LogSoftmax internally, which would bias the comparison against ShiftMax.
+
+# Results:
+![ShiftMax vs Softmax](ShiftMax vs Softmax Benchmark -- Ranking by Accuracy.png)
