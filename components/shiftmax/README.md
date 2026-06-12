@@ -54,4 +54,4 @@ def jsd_loss(probs, targets, num_classes, alpha=0.1, eps=1e-12):
 **Note:** I use `cross_entropy_probs` instead of standard CrossEntropyLoss because the standard implementation uses LogSoftmax internally, which would bias the comparison against ShiftMax.
 
 # Results:
-![ShiftMax vs Softmax](ShiftMax vs Softmax Benchmark -- Ranking by Accuracy.png)
+![ShiftMax vs Softmax](Softmax vs ShiftMax Benchmark -- Ranking by Accuracy.png)
