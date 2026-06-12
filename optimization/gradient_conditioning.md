@@ -7,7 +7,7 @@
 
 ## Abstract
 
-Vanilla SGD doesn't know which gradient direction(For each weight vector) leads to good generalization. I added a tiny module that scales and shifts the gradient right before the parameter update. On CIFAR‑10, this gave a 10–20% test accuracy improvement over plain SGD, with about 12% extra training time. No new optimizer, no weight decay tuning — just a **hardcoded** but smarter gradient.
+Vanilla SGD doesn't know which gradient direction(For each weight vector) leads to good generalization. I added a tiny module that scales and shifts the gradient right before the parameter update. On CIFAR‑10, this gave a 7-12% test accuracy improvement over plain SGD, with about 12% extra training time. No new optimizer, no weight decay tuning — just a **hardcoded** but smarter gradient.
 
 ---
 
