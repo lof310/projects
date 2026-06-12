@@ -5,7 +5,8 @@ Experimental replacements for Transformer components. Work in progress.
 ## What's in here
 
 - **Orthogonal-Parallel Residuals** - Replaces standard skip connections by splitting sublayer outputs into a parallel component (reinforcement) and an orthogonal component (new information). Learns the mix per layer. At small scale improves validation accuracy only slightly because at those scales (~3M-7M parameters) models are very stable and don't suffer from instability problems. However,the norm of activations stays quite balanced across layers even at small scales. See: `components/skip-connection/Benchmark_Residual_Stream.ipynb`
-- **Gradient Conditioning (for SGD)** - A small transformation applied to gradients before the optimizer step. Makes SGD find flatter minima. Gave 7.2-8.2 percentage point improvement on CIFAR-10 test accuracy in 10 epochs. My goal is to understand why this improvement occurred and how to replicate it at scale with lower cost. See: `optimization/gradient_conditioning.md`
+
+- **Gradient Conditioning (for SGD)** - A small transformation applied to gradients before the optimizer step. Makes SGD find flatter minima. Gave +7.2-10.2pp percentage point improvement on CIFAR-10 test accuracy in 10 epochs. My goal is to understand why this improvement occurred and how to replicate it at scale with lower cost. See: `optimization/gradient_conditioning.md`
 
 - **ShiftMax** - A replacement for Softmax that is more efficient (same FLOPs but no exponentials, so faster in hardware) and has better behavior (no over-confidence). This normalization function is not a replacement for softmax in attention or in loss computation. I plan to use it for components that require normalization for probabilities, good non-linearity and gradient flow, but without over-confidence. See: `components/shiftmax`
 
