@@ -18,7 +18,7 @@ No dropout was used to avoid bias in the results.
 
 The final layer of the network uses ShiftMax or Softmax respectively.
 
-Various Loss Functions where evaluated for ShiftMax:
+Various Loss Functions were evaluated for ShiftMax:
 ```python
 @staticmethod
 def cross_entropy_probs(probs, targets, eps=1e-12):
