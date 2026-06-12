@@ -4,17 +4,21 @@ Experimental replacements for Transformer components. Work in progress.
 
 ## What's in here
 
-- **Orthogonal-Parallel Residuals** - Replaces standard skip connections by splitting sublayer outputs into a parallel component (reinforcement) and an orthogonal component (new information). Learns the mix per layer. At small scale improves validation accuracy only by a little because at those small scales around 3M-7M parameters the models are very stable and don't suffer of any unstability problem. But still at small scales the norm of the activations keeps balanced. See: `components/skip-connection/Benchmark_Residual_Stream.ipynb`
-- **Gradient Conditioning (for SGD)** - A small transformation applied to gradients before the optimizer step. Makes SGD find flatter minima. Gave 10‑20% improvement on CIFAR‑10. My goal is to find out why such a big improvement happened and how to replicate it at scale with less costs. See `optimization/gradient_conditioning.md`
-- **ShiftMax** - A replacement for Softmax that is a little more efficient(Same FLOPs but no exponentials so it's faster in hardware) and has a better behaviour(No over-confidence). This Normalization function is not a replacement for softmax in attention or in the loss computation of a Transformer. But i plan to use it for a component that requires normalization for probabilities, good non-linearity and gradient but also no over-confidence. See `cpmponents/shiftmax`
-- **Don't have a name for this** - Something i made when i was starting. I'm probably not going to include this in the first MVP. The second video was the first version with random input. See `stuff/net`
-- **Also don't have a name for this** - Symbolic Language for AIs CoT. Made specifically for very small models. See `stuff/something.md`
-- **Other pieces** - I'm also poking at attention (replacements of attention) and feed-forward blocks (whole different architectures, not just new activation functions). No published code.
+- **Orthogonal-Parallel Residuals** - Replaces standard skip connections by splitting sublayer outputs into a parallel component (reinforcement) and an orthogonal component (new information). Learns the mix per layer. At small scale improves validation accuracy only slightly because at those scales (~3M-7M parameters) models are very stable and don't suffer from instability problems. However,the norm of activations stays quite balanced across layers even at small scales. See: `components/skip-connection/Benchmark_Residual_Stream.ipynb`
+- **Gradient Conditioning (for SGD)** - A small transformation applied to gradients before the optimizer step. Makes SGD find flatter minima. Gave 7.2-8.2 percentage point improvement on CIFAR-10 test accuracy in 10 epochs. My goal is to understand why this improvement occurred and how to replicate it at scale with lower cost. See: `optimization/gradient_conditioning.md`
+
+- **ShiftMax** - A replacement for Softmax that is more efficient (same FLOPs but no exponentials, so faster in hardware) and has better behavior (no over-confidence). This normalization function is not a replacement for softmax in attention or in loss computation. I plan to use it for components that require normalization for probabilities, good non-linearity and gradient flow, but without over-confidence. See: `components/shiftmax`
+
+- **Early Experiment** - Preliminary architecture from when I was starting. Probably won't include in the first MVP. See: `stuff/net`
+
+- **Symbolic CoT Language** - Symbolic language for AI Chain-of-Thought, designed for very small models. See: `stuff/something.md`
+
+- **Other pieces** - I'm also exploring attention replacements and feed-forward block architectures (complete redesigns, not just new activation functions). Code not published.
 
 ## Setup
-
 Everything runs on CPU (my laptop) or my phone (PyTorch on Termux).
 
 ## Why
 
-I think the Transformer is full of things that can be done better. I'm going after them one by one.
+I think the Transformer has components that can be improved. I'm addressing them 
+one by one.
