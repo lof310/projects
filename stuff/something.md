@@ -5,9 +5,9 @@ This is a new symbolic language I'm designing specifically for small AI models (
 ## Design Goals
 
 - **Vocabulary:** <600 tokens total (vs. Lean's thousands)
-- **No natural language:** Purely symbolic, easier for small models to parse
+- **No natural language:** Purely symbolic, easier for small models to parse. But it is also easier to translate directly to Natural Language.
 - **Coverage:** Supports proofs, reasoning, CoT, manual computations and logical deduction
-- **Motivation:** Lean is too complex for small models to learn effectively
+- **Motivation:** Lean is more of a programming language it is too complex for small models to learn effectively.
 
 ## Example: Euclid's Proof of infinitude of Primes.
 
