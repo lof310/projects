@@ -7,7 +7,7 @@
 
 ## Abstract
 
-Vanilla SGD doesn't know which gradient direction(For each weight vector) leads to good generalization. I added a tiny module that scales and shifts the gradient right before the parameter update. On CIFAR‑10, this gave a 7-12% test accuracy improvement over plain SGD, with about 12% extra training time. No new optimizer, no weight decay tuning - just a **hardcoded** but smarter gradient.
+Vanilla SGD doesn't know which gradient direction(For each weight vector) leads to good generalization. I added a tiny module that scales and shifts the gradient right before the parameter update. On CIFAR‑10, this gave a +7-12pp test accuracy improvement over plain SGD, with about 12% extra training time. No new optimizer, no weight decay tuning - just a **hardcoded** but smarter gradient.
 
 ---
 
@@ -34,7 +34,7 @@ g_cond = scale * g + shift
 w = w - lr * g_cond
 ```
 
-`scale` and `shift` are scalar parameters (one per weight tensor) - not per‑element, just two numbers per tensor. For a typical CNN with ~1M parameters this adds fewer than 100 scalars. These scalars are generated according to the size, length and position in the network of each tensor and two carefully choosen hyperparameters D and H.
+`scale` and `shift` are scalar parameters (one per weight tensor) - not per‑element, just two numbers per tensor. For a typical CNN with ~1M parameters this adds fewer than 100 scalars. These scalars are generated according to the size, length and position in the network of each tensor and two extremmely carefully choosen hyperparameters D and H.
 
 The conditioner does nothing else. No normalization, no momentum inside it, no memory. It's as simple as it gets.
 
