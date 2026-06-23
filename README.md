@@ -14,6 +14,8 @@ Experimental replacements for Transformer components. Work in progress.
 
 - **Symbolic CoT Language** - Symbolic language for AI Chain-of-Thought, designed for very small models. See: `stuff/something.md`
 
+- **RCCD** - Synthetic Random Character Classification Dataset I'm using to benchmark two CNNs. The Results will be published shortly. See: `stuff/dataset/RCCD`
+
 - **Other pieces** - I'm also exploring attention replacements and feed-forward block architectures (complete redesigns, not just new activation functions). Code not published.
 
 ## Setup
