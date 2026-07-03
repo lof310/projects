@@ -1,6 +1,6 @@
 # projects
 
-Experimental replacements for Transformer components. Work in progress.
+Building Towards AGI(or maybe just better LLMs). Work in progress.
 
 ## What's in here
 
