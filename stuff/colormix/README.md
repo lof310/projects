@@ -106,5 +106,3 @@ Both models were trained with:
 Despite having ~24% fewer parameters, the ColorMix model consistently outperforms the baseline.
 
 ![Benchmark Results](Benchmark_CNN_ColorMixer_vs_Baseline.png)
-
-> [!NOTE] When tested on the same image as the earlier examples of the output at initialization, the Structural Similarity Index Measure (SSIM) drops compared to the baseline by `~0.003`.
