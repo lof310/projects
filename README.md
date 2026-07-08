@@ -20,6 +20,8 @@ Building Towards AGI(or maybe just better LLMs). Work in progress.
 
 - **ColorMixing** - Improved Color Mixing in CNNs. Beats the standard convolutional baseline across all metrics(train/val loss and PSNR). See: [`stuff/colormix/README.md`](stuff/colormix/README.md)
 
+- **Replacement of VGG** - New loss functions that replace the use of VGG for perceptual loss. I cannot make a Benchmark against VGG but early results are promising. See: [`stuff/vgg/README.md`(stuff/vgg/README.md)
+
 - **Other pieces** - I'm also exploring attention replacements and feed-forward block architectures (complete redesigns, not just new activation functions). Code not published.
 
 ## Setup
