@@ -27,7 +27,8 @@ Both networks and training parameters Same as the Baseline from the ColorMix ben
 
 Model 0: The model using the new loss function,    Baseline: The model using L1 Loss.
 
-> [!NOTE] Further results will be published later.
+> [!NOTE]
+> Further results will be published later.
 
 ## Implementation Notes
 - The image is cropped before any operation:
