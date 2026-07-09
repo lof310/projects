@@ -13,7 +13,8 @@ The loss function has two streams(summed to get the final loss):
 
 **Due to the first stream being much more less noisy the training is much more stable and therefore the network converges much faster and learns better**
 
-[!NOTE] By tuning some parameters in the loss function a record of 21.3 -> ~30 PSNR(Peak Signal Noise Ratio) was achieved only in 10 steps. But the results shown here use the original default parameters which make the network achieve the same PSNR for step ~25
+> [!NOTE]
+> By tuning some parameters in the loss function a record of 21.3 -> ~30 PSNR(Peak Signal Noise Ratio) was achieved only in 10 steps. But the results shown here use the original default parameters which make the network achieve the same PSNR for step ~25
 
 ## Setup
 Both networks and training parameters Same as the Baseline from the ColorMix benchmark but with:
