@@ -25,24 +25,24 @@ Both networks and training parameters Same as the Baseline from the ColorMix ben
 **Benchmark against pure L1Loss**
 ![Benchmark Results](Benchmark_CNN_NewLoss_vs_L1Loss.png)
 
-Model 0: The model using the new loss function,    Baseline: The model using L1 Loss
+Model 0: The model using the new loss function,    Baseline: The model using L1 Loss.
 
-[!NOTE] Further results will be published later.
+> [!NOTE] Further results will be published later.
 
 ## Implementation Notes
 - The image is cropped before any operation:
 ```python
-    def forward(self, p, t):
-        b = None # Not disclosed, but usually 2
-        N = p.size(0)
-        p_c = p[:,:,b:-b,b:-b]
-        t_c = t[:,:,b:-b,b:-b]
+def forward(self, p, t):
+    b = None # Not disclosed, but usually 2
+    N = p.size(0)
+    p_c = p[:,:,b:-b,b:-b]
+    t_c = t[:,:,b:-b,b:-b]
 ```
 - Padding is added to the target, default is 3
 - Kernels Used for gradient loss:
-```
-        # Scharr Kernels
-        kx = torch.tensor([[-3,0,3],[-10,0,10],[-3,0,3]], dtype=torch.float32).view(1,1,3,3).repeat(3,1,1,1)
-        ky = torch.tensor([[-3,-10,-3],[0,0,0],[3,10,3]], dtype=torch.float32).view(1,1,3,3).repeat(3,1,1,1) # kx transposed
+```python
+# Scharr Kernels
+kx = torch.tensor([[-3,0,3],[-10,0,10],[-3,0,3]], dtype=torch.float32).view(1,1,3,3).repeat(3,1,1,1)
+ky = torch.tensor([[-3,-10,-3],[0,0,0],[3,10,3]], dtype=torch.float32).view(1,1,3,3).repeat(3,1,1,1) # kx transposed
 ```
 - The loss function has a total of 6 parameters, 3 of which are critical, and 1 that depends on the size of the images in the dataset which should be chosen carefully.
