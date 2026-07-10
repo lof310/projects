@@ -24,12 +24,33 @@ Both networks and training parameters Same as the Baseline from the ColorMix ben
 
 ## Results
 **Benchmark against pure L1Loss**
-![Benchmark Results](Benchmark_CNN_NewLoss_vs_L1Loss.png)
+![Benchmark Results #1](Benchmark_CNN_NewLoss_vs_L1Loss.png)
+
+**Benchmark against L1Loss + Sobel-based Gradient Loss**
+![Benchmark Results #2](Benchmark_CNN_NewLoss_vs_L1GradLoss.png)
 
 Model 0: The model using the new loss function,    Baseline: The model using L1 Loss.
 
 > [!NOTE]
 > Further results will be published later.
+
+## L1 + Sobel-Based Gradient Loss
+```python
+class L1SobelLoss(nn.Module):
+    def __init__(self, l1_weight=1.0, grad_weight=0.1):
+        super().__init__()
+        self.l1w = l1_weight
+        self.gw = grad_weight
+        self.register_buffer('sx', torch.tensor([[1,0,-1],[2,0,-2],[1,0,-1]], dtype=torch.float32).view(1,1,3,3))
+        self.register_buffer('sy', torch.tensor([[1,2,1],[0,0,0],[-1,-2,-1]], dtype=torch.float32).view(1,1,3,3))
+
+    def forward(self, p, t):
+        C = p.shape[1]
+        k = torch.cat([self.sx.expand(C,1,3,3), self.sy.expand(C,1,3,3)], 0)
+        Gp = F.conv2d(p, k, padding=1, groups=C)
+        Gt = F.conv2d(t, k, padding=1, groups=C)
+        return self.l1w * F.l1_loss(p,t) + self.gw * F.l1_loss(Gp, Gt)
+```
 
 ## Implementation Notes
 - The image is cropped before any operation:
