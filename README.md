@@ -14,7 +14,9 @@ Building Towards AGI(or maybe just better LLMs). Work in progress.
 
 - **Symbolic CoT Language** - Symbolic language for AI Chain-of-Thought, designed for very small models. See: [`stuff/something.md`](stuff/something.md)
 
-- **RCCD** - Synthetic Random Character Classification Dataset I'm using to benchmark two CNNs. The Results will be published shortly. See: [`stuff/dataset/RCCD/README.md`](stuff/dataset/RCCD/README.md)
+- **Random Character Classification Dataset (RCCD)** - Synthetic Random Character Classification Dataset. See: [`stuff/dataset/RCCD/README.md`](stuff/dataset/RCCD/README.md)
+
+- **Line Intersections Dataset (LID)** - Generates synthetic images of random lines with target labels equal to the number of interior intersection points among the lines. Outputs as either individual PNG files organized by label or a PyTorch tensor pair. See: [`stuff/dataset/LID/dataset_gen.py`](stuff/dataset/LID/dataset_gen.py)
 
 - **Super-Resolution Datatset generator** - A script that generates a dataset for X2 image super-resolution. Scans local images (`.png`, `.jpg`, `.jpeg`) and videos (`.mp4`, `.mkv`) via `ffmpeg`, extracts random crops and generates bicubic LR-HR pairs with various crops per image. See: [`stuff/dataset/SRD/dataset_gen.py`](stuff/dataset/SRD/dataset_gen.py)
 
