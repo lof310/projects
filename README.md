@@ -20,6 +20,8 @@ Building Towards AGI(or maybe just better LLMs). Work in progress.
 
 - **Super-Resolution Datatset generator** - A script that generates a dataset for X2 image super-resolution. Scans local images (`.png`, `.jpg`, `.jpeg`) and videos (`.mp4`, `.mkv`) via `ffmpeg`, extracts random crops and generates bicubic LR-HR pairs with various crops per image. See: [`stuff/dataset/SRD/dataset_gen.py`](stuff/dataset/SRD/dataset_gen.py)
 
+- **Audio Dataset Generator** - A script that generates a dataset for training Audio AutoEncoders. See: [`stuff/dataset/ADG/dataset_gen.py`](stuff/dataset/ADG/dataset_gen.py)
+
 - **ColorMixing** - Improved Color Mixing in CNNs. Beats the standard convolutional baseline across all metrics(train/val loss and PSNR). See: [`stuff/colormix/README.md`](stuff/colormix/README.md)
 
 - **Replacement of VGG** - New loss functions that replace the use of VGG for perceptual loss. I cannot make a Benchmark against VGG on CPU, but early results are promising. See: [`stuff/vgg/README.md`](stuff/vgg/README.md)
