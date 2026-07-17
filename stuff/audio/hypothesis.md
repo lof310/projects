@@ -16,18 +16,18 @@ The baseline was given **more channels** intentionally to its encoder to give it
 
 ### Model sizes
 
-| Model     | Parameters (approx.) | Effective temporal receptive field | Training Peak Memory |
-|-----------|----------------------|------------------------------------|----------------------|
-| New model | ~31 k                | around ~130                        | ~0.97                |
-| Baseline  | ~48 k                | around ~180                        | ~1.19                |
+| Model     | Parameters (approx.) | Effective temporal receptive field | Training Peak Memory | MACs $10^6$ |
+|-----------|----------------------|------------------------------------|----------------------|--------------|
+| New model | ~31 k                | around ~130                        | ~0.97                | 25.7         |
+| Baseline  | ~48 k                | around ~180                        | ~1.19                | 32.4         |
 
 Training peak memory = inference activations + parameters + gradients (same size as parameters). Optimizer states are not included. N = 2048
 
-The new model is about **17% lighter in activations** and **35% smaller in parameters** while still reaching a lower validation loss.
+The new model is about **17% lighter in activations**, **35% smaller in parameters** and uses **~21% fewer FLOPs**(Because it uses fewer channels), while still reaching a lower validation loss.
 
 ## Results
 
-The new model reaches a lower validation loss, despite having **35% fewer parameters**, a **smaller receptive field** and being a little unstable, a result that contradicts the default assumption that more capacity and wider context are always better for audio data.
+The new model reaches a lower validation loss, despite having **35% fewer parameters**, a **smaller receptive field** and starting slower (higher first epoch loss) but converges to a slightly better minimum, a result that contradicts the default assumption that more capacity and wider context are always better for audio data.
 
 ![Benchmark Results](Benchmark_Results_AutoEncoder.png)
 
@@ -128,3 +128,6 @@ The last convolution
 ```python
 self.c12 = nn.Conv1d(24, 28, kernel_size=5, stride=2, padding=2)
 ```
+
+**If even a tiny, carefully‑shaped encoder can beat a wider pure‑1D baseline with fewer FLOPs and less memory, then the design space for audio architectures may be far from exhausted.**
+
