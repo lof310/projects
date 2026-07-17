@@ -26,7 +26,7 @@ Building Towards AGI(or maybe just better LLMs). Work in progress.
 
 - **Replacement of VGG** - New loss functions that replace the use of VGG for perceptual loss. I cannot make a Benchmark against VGG on CPU, but early results are promising. See: [`stuff/vgg/README.md`](stuff/vgg/README.md)
 
-- **Early Audio Hypothesis Test** - There is a fundamental misalignment in how the field treats Raw Audio Signals. I benchmarked two AutoEncoders, mine and the baseline. Despite having fewer parameters, a smaller receptive field in the time dimension and contrary to the default assumption that uniform temporal processing is optimal for waveform reconstruction, It reaches lower validation loss after 5 epochs. See: ['stuff/audio/hypothesis.md'](stuff/audio/hypothesis.md)
+- **Early Audio Hypothesis Test** - There is a fundamental misalignment in how the field treats Raw Audio Signals. I benchmarked two AutoEncoders, mine and the baseline. Despite having fewer parameters, a smaller receptive field in the time dimension and contrary to the default assumption that uniform temporal processing is optimal for waveform reconstruction, It reaches lower validation loss after 5 epochs. See: [`stuff/audio/hypothesis.md`](stuff/audio/hypothesis.md)
 
 - **Other pieces** - I'm also exploring attention replacements and feed-forward block architectures (complete redesigns, not just new activation functions). Code not published.
 
