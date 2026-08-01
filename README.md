@@ -28,6 +28,8 @@ Building Towards AGI(or maybe just better LLMs). Work in progress.
 
 - **Early Audio Hypothesis Test** - There is a fundamental misalignment in how the field treats Raw Audio Signals. I benchmarked two AutoEncoders, mine and the baseline. Despite having fewer parameters, a smaller receptive field in the time dimension and contrary to the default assumption that uniform temporal processing is optimal for waveform reconstruction, It reaches lower validation loss after 5 epochs. See: [`stuff/audio/hypothesis.md`](stuff/audio/hypothesis.md)
 
+- **Loss Function** - A new loss function that I haven't named yet for regression tasks that was created to avoid the "averaging" problem of losses like MAE and MSE. See: [`stuff/losses/myloss/README.md`](stuff/losses/myloss/README.md)
+
 - **Other pieces** - I'm also exploring attention replacements and feed-forward block architectures (complete redesigns, not just new activation functions). Code not published.
 
 ## Setup
