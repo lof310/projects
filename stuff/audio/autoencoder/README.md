@@ -3,6 +3,8 @@
 > [!NOTE]
 > The internal implementation of the AutoEncoder is intentionally omitted from this public repository. The training setup, a description of the architecture, the notebook used to train it and the results are fully disclosed.
 
+**See the audio files in this directory.**
+
 ## Architecture
 Downsampling using Strided Convolutions of Even kernel size being the double of the stride.
 Residual Blocks before the strided convolutions and Dilated Convolutions on the Residual Blocks.
