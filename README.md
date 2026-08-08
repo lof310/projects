@@ -30,6 +30,8 @@ Building Towards AGI(or maybe just better LLMs). Work in progress.
 
 - **Loss Function** - A new loss function that I haven't named yet for regression tasks that was created to avoid the "averaging" problem of losses like MAE and MSE. See: [`stuff/losses/myloss/README.md`](stuff/losses/myloss/README.md)
 
+- **Pre-Encoder** - A Raw Audio AutoEncoder that will be used as a "Pre-Encoder" for another AutoEncoder that will follow the "Re-Encoder" general idea from the paper [`https://arxiv.org/abs/2506.00681v2`](https://arxig.org/abs/2506.00681v2). See: [`stuff/audio/autoencoder/README.md`](stuff/audio/autoencoder/README.md)
+
 - **Other pieces** - I'm also exploring attention replacements and feed-forward block architectures (complete redesigns, not just new activation functions). Code not published.
 
 ## Setup
